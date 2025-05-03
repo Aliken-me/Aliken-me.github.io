@@ -1,0 +1,42 @@
+---
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Aliken Logo v2.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aliken</title>
+  </head>
+  <body class="bg-gray-950 text-white font-sans">
+    <header class="p-4 border-b border-gray-800">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
+            <div class="flex items-center gap-2">
+                <div class="bg-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
+                  <img src="/Aliken Logo v2.svg" alt="Logo" class="w-6 h-6" />
+                </div>
+                <span class="text-xl font-bold">Aliken</span>
+            </div>
+      
+          <nav class="flex flex-wrap justify-center gap-4 text-sm sm:text-base">
+            <a href="/" class="text-gray-300 hover:text-white">Home</a>
+            <a href="/projects" class="text-gray-300 hover:text-white">Projects</a>
+            <a href="/hobbies" class="text-gray-300 hover:text-white">Hobbies</a>
+            <a href="/contact" class="text-gray-300 hover:text-white">Contact</a>
+            <a href="/about" class="text-gray-300 hover:text-white">About</a>
+          </nav>
+        </div>
+      </header>
+      
+
+    <main class="max-w-5xl mx-auto py-10 px-4">
+      <slot />
+    </main>
+
+    <footer class="text-center text-sm text-gray-500 py-6 border-t border-gray-800">
+      © {new Date().getFullYear()} Aliken Portfolio. All rights reserved.
+    </footer>
+  </body>
+</html>

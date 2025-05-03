@@ -1,0 +1,28 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/global.css";
+---
+
+<MainLayout title="About Me">
+    <h2 class="text-3xl font-semibold mb-6 text-center sm:text-left">About Me</h2>
+  
+    <div class="space-y-4 max-w-2xl text-gray-300 mx-auto px-4 sm:px-0 text-base sm:text-lg">
+      <p>
+        I'm an aerospace engineering student passionate about orbital mechanics, satellite systems, and space exploration.
+      </p>
+      <p>
+        Over the past few years, I've worked on various projects related to orbit simulation, telemetry visualization, and propulsion design.
+      </p>
+      <p>
+        In my free time, I enjoy stargazing, sketching spacecraft designs, and contributing to open-source aerospace tools.
+      </p>
+  
+      <div class="mt-6 text-center sm:text-left">
+        <a href="/projects"
+          class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded transition">
+          View My Projects →
+        </a>
+      </div>
+    </div>
+  </MainLayout>
+  
