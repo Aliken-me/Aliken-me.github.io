@@ -1,11 +1,203 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import "../styles/global.css";
+import MainLayout from '../layouts/MainLayout.astro';
+
+const coreDomains = [
+  {
+    title: "Space Systems & Small Satellites",
+    description: "Mission analysis, subsystem requirements, FMECA reliability coordination, and 3U CubeSat architecture within international mission frameworks.",
+    tag: "SPACE SYSTEMS",
+    icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+  },
+  {
+    title: "Scientific Payloads & Embedded Dev",
+    description: "Subsystem-level firmware implementation, sensor interfacing, and hardware integration for Electrodynamic Tether (EDT), dosimetry, and imaging payloads.",
+    tag: "PAYLOAD & EMBEDDED",
+    icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+  },
+  {
+    title: "Technical Computing & Simulation",
+    description: "Trajectory and orbital mechanics modeling, numerical analysis, data processing, and engineering automation utilizing MATLAB and Python.",
+    tag: "SIMULATION & TOOLS",
+    icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"
+  }
+];
+
+const featuredProjects = [
+  {
+    title: "SPARCS Mission (APSCO)",
+    subtitle: "Assistant System Engineer & Payload Designer",
+    description: "An international collaborative 3U CubeSat project qualified for the engineering model (EM) development phase. Focus on Electrodynamic Tether (EDT) and Dosimetry payload definitions and FMECA reliability analysis.",
+    tags: ["CubeSat 3U", "APSCO", "EDT Payload", "FMECA", "MATLAB"],
+    link: "/projects"
+  },
+  {
+    title: "EduSat: Educational CubeSat Platform",
+    subtitle: "System Designer & Embedded Programmer — Sepehr Team",
+    description: "Designed Version 1.0 of an educational CubeSat platform and conducted a hands-on 16-hour workshop instructing core satellite subsystems and embedded workflows.",
+    tags: ["EduSat", "Embedded Systems", "Hardware Workshop", "C/C++"],
+    link: "/projects"
+  }
+];
+
+const highlights = [
+  {
+    label: "Education",
+    detail: "M.Sc. in Space Engineering at Sharif University of Technology"
+  },
+  {
+    label: "Global Program",
+    detail: "APSCO Summer Camp Participant at Northwestern Polytechnical University (NPU), Xi'an, China"
+  },
+  {
+    label: "Publication",
+    detail: "Co-author in the 23rd International Conference of Iranian Aerospace Society (SPARCS CubeSat Mission)"
+  }
+];
 ---
 
-<MainLayout title="Home">
-  <h2 class="text-3xl font-semibold mb-4">Hi, I’m Aliken</h2>
-  <p class="text-gray-400">
-    I'm an aerospace enthusiast and this is my portfolio built with Astro and Tailwind CSS.
-  </p>
+<MainLayout title="Ali Moradi | Space Systems Engineer">
+  <!-- Hero Section -->
+  <section class="flex flex-col items-start gap-6 pt-2 pb-16 md:pb-20 border-b border-slate-800/60">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-sky-950/60 text-sky-400 border border-sky-800/50">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      Space Systems Engineer & M.Sc. Student at Sharif Univ.
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white max-w-4xl leading-[1.15]">
+      Engineering small satellite missions, <span class="bg-gradient-to-r from-sky-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">scientific payloads</span>, and computational models.
+    </h1>
+
+    <p class="text-base sm:text-lg text-slate-400 max-w-3xl leading-relaxed">
+      I am a graduate space systems engineer from Sharif University of Technology. My work centers on CubeSat mission analysis, payload design—specifically electrodynamic tethers and dosimetry experiments—and subsystem-level embedded programming.
+    </p>
+
+    <!-- CTAs & Direct Contact Links -->
+    <div class="flex flex-wrap items-center gap-4 pt-2">
+      <a
+        href="/projects"
+        class="px-6 py-2.5 rounded-lg text-sm font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-lg shadow-sky-500/20"
+      >
+        View Projects & Missions
+      </a>
+      <a
+        href="/skills"
+        class="px-6 py-2.5 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-200 transition-all"
+      >
+        Technical Competencies
+      </a>
+      <a
+        href="https://linkedin.com/in/Aliken"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 py-2.5 rounded-lg text-sm font-medium border border-slate-700 bg-slate-900/60 hover:bg-[#0077b5]/20 hover:border-[#0077b5]/60 text-slate-200 transition-all flex items-center gap-2"
+      >
+        <svg class="w-4 h-4 fill-current text-sky-400" viewBox="0 0 24 24">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+        <span>LinkedIn</span>
+        <span class="text-xs text-slate-500">↗</span>
+      </a>
+      <a
+        href="mailto:ali.morad@sharif.edu"
+        class="px-3 py-2.5 rounded-lg text-sm font-mono text-slate-400 hover:text-white transition-colors"
+      >
+        ali.morad@sharif.edu &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Highlights Bar -->
+  <section class="py-10 border-b border-slate-800/60">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {highlights.map((item) => (
+        <div class="p-4 rounded-xl bg-slate-900/30 border border-slate-800/60">
+          <span class="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-semibold block mb-1">
+            {item.label}
+          </span>
+          <p class="text-xs sm:text-sm text-slate-300 leading-snug">
+            {item.detail}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Core Competencies Section -->
+  <section class="py-14 md:py-18 border-b border-slate-800/60">
+    <div class="flex flex-col gap-2 mb-10">
+      <h2 class="text-xs font-mono tracking-widest uppercase text-sky-400 font-semibold">Specialization</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-white">Focus Areas & Engineering Domains</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {coreDomains.map((item) => (
+        <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700/80 hover:bg-slate-800/30 transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10.5px] font-mono font-medium text-slate-400 px-2 py-0.5 rounded bg-slate-800/60 border border-slate-700/50">
+                {item.tag}
+              </span>
+              <div class="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d={item.icon} />
+                </svg>
+              </div>
+            </div>
+            <h4 class="text-lg font-semibold text-white mb-2 group-hover:text-sky-300 transition-colors">
+              {item.title}
+            </h4>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Featured Highlights Section -->
+  <section class="py-14 md:py-18">
+    <div class="flex items-center justify-between mb-10">
+      <div>
+        <h2 class="text-xs font-mono tracking-widest uppercase text-sky-400 font-semibold">Track Record</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1">Featured Missions & Projects</h3>
+      </div>
+      <a href="/projects" class="text-sm font-medium text-sky-400 hover:text-sky-300 transition-colors hidden sm:block">
+        All Projects &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {featuredProjects.map((project) => (
+        <a 
+          href={project.link}
+          class="block p-7 rounded-2xl bg-gradient-to-b from-slate-900/60 to-slate-900/30 border border-slate-800/80 hover:border-sky-500/50 hover:bg-slate-800/40 transition-all group"
+        >
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <div>
+              <h4 class="text-lg sm:text-xl font-bold text-white group-hover:text-sky-300 transition-colors">
+                {project.title}
+              </h4>
+              <p class="text-xs font-mono text-sky-400/90 mt-0.5">
+                {project.subtitle}
+              </p>
+            </div>
+            <span class="text-slate-500 group-hover:text-sky-400 group-hover:translate-x-0.5 -translate-y-0.5 transition-all text-lg">↗</span>
+          </div>
+
+          <p class="text-sm text-slate-400 leading-relaxed mb-6 mt-3">
+            {project.description}
+          </p>
+
+          <div class="flex flex-wrap gap-2 font-mono">
+            {project.tags.map((tag) => (
+              <span class="text-[11px] text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/60">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
 </MainLayout>
