@@ -1,26 +1,171 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import "../styles/global.css";
+import MainLayout from '../layouts/MainLayout.astro';
+
+interface Project {
+  title: string;
+  category: "CubeSat Missions" | "Astrodynamics & Simulation" | "Embedded & Payloads";
+  role: string;
+  organization?: string;
+  status: "In Progress (EM Phase)" | "Replication & Code" | "Implemented & Verified";
+  description: string;
+  highlights: string[];
+  tools: string[];
+  githubUrl?: string;
+}
+
+const projects: Project[] = [
+  {
+    title: "SPARCS: 3U CubeSat Mission (APSCO ACC)",
+    category: "CubeSat Missions",
+    role: "Assistant System Engineer & Payload Designer",
+    organization: "Sharif Space Systems / APSCO",
+    status: "In Progress (EM Phase)",
+    description: "An international collaborative 3U CubeSat mission designed for technology demonstration in LEO, qualified for the Engineering Model (EM) construction phase in the APSCO CubeSat Competition (ACC).",
+    highlights: [
+      "Conducted system-level requirement derivations, trade studies, and FMECA reliability coordination.",
+      "Spearheaded payload concept studies and interface specifications for an Electrodynamic Tether (EDT) deorbiting experiment and space dosimetry.",
+      "Managed mission timeline, subsystem matrix documentation, and multidisciplinary design iterations."
+    ],
+    tools: ["Systems Engineering", "FMECA", "EDT Payload", "MATLAB", "CubeSat 3U", "STK"]
+  },
+  {
+    title: "Equispaced RGT Formation Flying & Event-Driven Control Simulator",
+    category: "Astrodynamics & Simulation",
+    role: "Algorithm Developer & Numerical Implementation",
+    organization: "Sharif University of Technology",
+    status: "Replication & Code",
+    description: "High-fidelity numerical implementation and verification of an autonomous formation-keeping framework for equispaced satellites in Repeat Ground Track (RGT) LEO orbits under zonal geopotential perturbations (EGM2008).",
+    highlights: [
+      "Developed a custom MATLAB parser to extract and de-normalize zonal harmonics (J2–J10) from raw ICGEM gravity data files.",
+      "Implemented an iterative root-finding algorithm to compute nominal semi-major axis offsets (Δa) via averaging theory, eliminating differential secular drift.",
+      "Architected an event-driven state machine integrated with MATLAB high-order solvers (ode78/ode113) utilizing smooth zero-crossing trigger logic for impulse ΔV scheduling (GVE-based).",
+      "Simulated a comprehensive 60-day mission life cycle analyzing threshold breaches, local relative geometry stability, and along-track / cross-track velocity budgets."
+    ],
+    tools: ["MATLAB", "Relative Orbital Elements (ROE)", "EGM2008 Harmonics", "Gauss Variational Equations (GVE)", "State Machine"],
+    githubUrl: "https://github.com/Aliken-me"
+  },
+  {
+    title: "EduSat: Modular Educational CubeSat Platform (v1.0)",
+    category: "Embedded & Payloads",
+    role: "System Designer & Embedded Programmer",
+    organization: "Sepehr Space Team",
+    status: "Implemented & Verified",
+    description: "End-to-end electrical architecture, PCB schematic design, and firmware implementation of a modular educational satellite simulator designed to replicate flight subsystem operations.",
+    highlights: [
+      "Developed camera payload firmware and Python ground station receiver script for image downlink and processing.",
+      "Engineered hardware drivers and bus communication (I2C/SPI) for MPU6050 IMU, GY-271 magnetometer, sun sensors, and environmental monitoring (AHT10).",
+      "Drafted comprehensive electrical schematics, telemetry protocols, and solar array power monitoring routines.",
+      "Conducted a 16-hour hands-on small satellite engineering and hardware training workshop for university students."
+    ],
+    tools: ["Embedded C/C++", "Python", "I2C / SPI / UART", "Sensor Fusion", "Hardware Schematics", "Systems Training"],
+    githubUrl: "https://github.com/Aliken-me/EDUSAT-V1.0"
+  }
+];
 ---
 
-<MainLayout title="Projects">
-  <h2 class="text-3xl font-semibold mb-6">My Projects</h2>
-
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 transform hover:scale-105 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-      <h3 class="text-xl font-bold mb-2">Orbital Simulator</h3>
-      <p class="text-gray-400 text-sm">A real-time satellite orbit simulation using MATLAB.</p>
+<MainLayout 
+  title="Projects & Missions | Ali Moradi" 
+  description="Technical CubeSat missions, astrodynamics numerical toolkits, and aerospace embedded systems by Ali Moradi."
+>
+  <section class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="mb-12 border-b border-slate-800/80 pb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-sky-950/60 text-sky-400 border border-sky-800/50 mb-3">
+        Technical Portfolio
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+        Projects & Missions
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl leading-relaxed">
+        Selected small satellite systems, numerical astrodynamics simulators, and embedded payload developments conducted at Sharif University of Technology and international space programs.
+      </p>
     </div>
 
-    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 transform hover:scale-105 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-      <h3 class="text-xl font-bold mb-2">Telemetry Dashboard</h3>
-      <p class="text-gray-400 text-sm">A web-based dashboard to visualize aerospace telemetry data.</p>
-    </div>
+    <!-- Project Cards Grid -->
+    <div class="grid grid-cols-1 gap-8">
+      {projects.map((proj) => (
+        <article class="p-6 sm:p-8 rounded-2xl bg-slate-900/40 border border-slate-800/80 hover:border-slate-700/80 hover:bg-slate-800/30 transition-all flex flex-col justify-between group">
+          <div>
+            <!-- Top Metadata -->
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-mono font-semibold px-2.5 py-0.5 rounded bg-sky-950/80 text-sky-400 border border-sky-800/60">
+                  {proj.category}
+                </span>
+                {proj.organization && (
+                  <span class="text-xs font-mono text-slate-400 px-2 py-0.5 rounded bg-slate-800/60 border border-slate-700/50">
+                    {proj.organization}
+                  </span>
+                )}
+              </div>
+              <span class={`text-[11px] font-mono px-2.5 py-0.5 rounded-full border ${
+                proj.status.includes('Progress') 
+                  ? 'bg-amber-950/40 text-amber-300 border-amber-800/50' 
+                  : proj.status.includes('Replication')
+                  ? 'bg-sky-950/40 text-sky-300 border-sky-800/50'
+                  : 'bg-emerald-950/40 text-emerald-300 border-emerald-800/50'
+              }`}>
+                {proj.status}
+              </span>
+            </div>
 
-    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 transform hover:scale-105 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-      <h3 class="text-xl font-bold mb-2">Rocket Design Tool</h3>
-      <p class="text-gray-400 text-sm">A basic design calculator for amateur rocket parameters.</p>
+            <!-- Title & Role -->
+            <h2 class="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-300 transition-colors">
+              {proj.title}
+            </h2>
+            <p class="text-xs sm:text-sm font-mono text-sky-400/90 mt-1 mb-4">
+              Role: {proj.role}
+            </p>
+
+            <!-- Description -->
+            <p class="text-slate-300 text-sm leading-relaxed mb-5">
+              {proj.description}
+            </p>
+
+            <!-- Key Milestones / Highlights -->
+            <div class="mb-6 bg-slate-950/40 rounded-xl p-4 border border-slate-800/50">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
+                Key Technical Highlights:
+              </span>
+              <ul class="space-y-1.5 text-xs sm:text-sm text-slate-400">
+                {proj.highlights.map((h) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-sky-400 mt-1">&#9656;</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom: Tools & Action Links -->
+          <div class="pt-4 border-t border-slate-800/60 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-1.5 font-mono">
+              {proj.tools.map((tool) => (
+                <span class="text-[11px] text-slate-300 bg-slate-800/80 px-2.5 py-0.5 rounded border border-slate-700/60">
+                  {tool}
+                </span>
+              ))}
+            </div>
+
+            <div class="flex items-center gap-3">
+              {proj.githubUrl && (
+                <a
+                  href={proj.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-xs font-mono text-sky-400 hover:text-sky-300 transition-colors"
+                >
+                  <span>Repository</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
-  </div>
+  </section>
 </MainLayout>
-
