@@ -1,14 +1,112 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import "../styles/global.css";
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="404 Not Found">
-  <div class="text-center py-20">
-    <h1 class="text-6xl font-extrabold text-blue-600 mb-4">404</h1>
-    <p class="text-xl text-gray-400 mb-6">Oops! The page you're looking for doesn't exist.</p>
-    <a href="/" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded transition">
-      Back to Home
-    </a>
+<MainLayout 
+  title="404 - Satellite Not Found | Ali Moradi" 
+  description="Telemetry Signal Lost - The requested trajectory or coordinate does not exist."
+>
+  <div class="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 py-16 sm:py-24">
+    
+    <!-- Background Centered Orbital Rings & Glow (No Clipping) -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[62%] w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] rounded-full border border-sky-500/15 animate-[spin_40s_linear_infinite] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[62%] w-[520px] h-[520px] sm:w-[640px] sm:h-[640px] rounded-full border border-dashed border-slate-800/80 animate-[spin_65s_linear_infinite_reverse] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[62%] w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <!-- Animated Floating Satellite SVG (Expanded ViewBox) -->
+    <div class="relative z-10 mb-8">
+      <div class="w-40 h-40 sm:w-48 sm:h-48 mx-auto animate-[float_4s_ease-in-out_infinite] filter drop-shadow-[0_0_25px_rgba(56,189,248,0.4)]">
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full overflow-visible">
+          <!-- Solar Panel Left -->
+          <rect x="15" y="72" width="42" height="38" rx="4" fill="#0b1120" stroke="#38bdf8" stroke-width="2"/>
+          <line x1="29" y1="72" x2="29" y2="110" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <line x1="43" y1="72" x2="43" y2="110" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <line x1="15" y1="91" x2="57" y2="91" stroke="#38bdf8" stroke-width="1.5"/>
+          <path d="M57 89H70V93H57Z" fill="#64748b"/>
+
+          <!-- Solar Panel Right -->
+          <rect x="123" y="72" width="42" height="38" rx="4" fill="#0b1120" stroke="#38bdf8" stroke-width="2"/>
+          <line x1="137" y1="72" x2="137" y2="110" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <line x1="151" y1="72" x2="151" y2="110" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <line x1="123" y1="91" x2="165" y2="91" stroke="#38bdf8" stroke-width="1.5"/>
+          <path d="M110 89H123V93H110Z" fill="#64748b"/>
+
+          <!-- Satellite Central Body (CubeSat Core) -->
+          <rect x="70" y="62" width="40" height="58" rx="7" fill="#070b14" stroke="#0ea5e9" stroke-width="2.5"/>
+          
+          <!-- Optical Payload Aperture -->
+          <circle cx="90" cy="85" r="11" fill="#0369a1" stroke="#38bdf8" stroke-width="2"/>
+          <circle cx="90" cy="85" r="4" fill="#38bdf8" class="animate-ping opacity-75"/>
+
+          <!-- Antenna Mast & Signal Emission -->
+          <line x1="90" y1="62" x2="90" y2="34" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="90" cy="30" r="3" fill="#38bdf8"/>
+          
+          <!-- Radiating Signal Waves -->
+          <path d="M82 22C86.8 18.5 93.2 18.5 98 22" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" class="animate-pulse"/>
+          <path d="M75 15C84 8 96 8 105 15" stroke="#0284c7" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+          <!-- Thruster Nozzle & Exhaust Plasma Glow -->
+          <path d="M84 120L82 128H98L96 120Z" fill="#475569"/>
+          <ellipse cx="90" cy="131" rx="5" ry="3" fill="#38bdf8" class="animate-pulse opacity-90"/>
+        </svg>
+      </div>
+
+      <!-- Orbit Particles -->
+      <span class="absolute -top-1 left-4 w-1.5 h-1.5 rounded-full bg-sky-400/80 animate-ping"></span>
+      <span class="absolute bottom-3 -right-3 w-1.5 h-1.5 rounded-full bg-teal-300 animate-pulse"></span>
+      <span class="absolute top-1/2 -left-7 w-1 h-1 rounded-full bg-slate-400"></span>
+    </div>
+
+    <!-- Status Code Badge -->
+    <div class="relative z-10 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-red-950/40 text-red-400 border border-red-800/50 mb-5">
+      <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+      <span>STATUS: 404_TELEMETRY_LOST</span>
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="relative z-10 text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-3 font-mono">
+      404: Satellite Not Found
+    </h1>
+    
+    <!-- Description -->
+    <p class="relative z-10 text-slate-400 text-sm sm:text-base max-w-lg mx-auto leading-relaxed mb-8">
+      The requested trajectory coordinate does not exist or has experienced secular orbital decay. Communication link could not resolve this route.
+    </p>
+
+    <!-- Navigation Buttons -->
+    <div class="relative z-10 flex flex-wrap items-center justify-center gap-4">
+      <a 
+        href="/" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-mono font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-lg shadow-sky-500/25 group"
+      >
+        <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Re-establish Uplink (Home)</span>
+      </a>
+
+      <a 
+        href="/projects" 
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-mono font-semibold text-slate-300 bg-slate-900/80 border border-slate-800 hover:border-slate-700 hover:text-white transition-all"
+      >
+        <span>Active Missions</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+
   </div>
 </MainLayout>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(1.5deg);
+    }
+  }
+</style>
