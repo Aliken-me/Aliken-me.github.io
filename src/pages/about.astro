@@ -1,28 +1,212 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import "../styles/global.css";
+import MainLayout from '../layouts/MainLayout.astro';
+
+const education = [
+  {
+    degree: "M.Sc. in Space Engineering",
+    institution: "Sharif University of Technology",
+    period: "2025 – Present",
+    details: "Thesis: Optimal Continuous-Thrust Deorbiting Control of an Active Debris Removal System via Koopman Operator Representation and HJB Value Function Approximation."
+  },
+  {
+    degree: "B.Sc. in Aerospace Engineering",
+    institution: "Sharif University of Technology",
+    period: "2020 – 2025",
+    details: "Solid foundations in flight dynamics, orbital mechanics, space systems engineering, and scientific computing."
+  }
+];
+
+const teaching = [
+  {
+    role: "Teaching Assistant (TA)",
+    course: "Satellite Systems Design",
+    institution: "Sharif University of Technology",
+    instructor: "Dr. A. H. Khodabakhsh",
+    period: "Recent Semester",
+    description: "Assisted in coursework delivery, requirement management discussions, and subsystem sizing workflows for space engineering students."
+  },
+  {
+    role: "Teaching Assistant (TA)",
+    course: "Reliability Analysis & Risk Assessment",
+    institution: "Sharif University of Technology",
+    instructor: "Dr. A. H. Khodabakhsh",
+    period: "Recent Semester",
+    description: "Guided students through FMECA methodology, fault tree analysis, and mission reliability calculations."
+  },
+  {
+    role: "Instructor & Technical Mentor",
+    course: "16-Hour Hands-on Educational CubeSat Workshop",
+    institution: "Sepehr Space Team",
+    period: "2024",
+    description: "Conducted an intensive practical workshop covering small satellite architecture, embedded subsystems, bus communications, and sensor interfacing."
+  }
+];
+
+const international = [
+  {
+    title: "APSCO Summer Camp Participant",
+    organization: "Asia-Pacific Space Cooperation Organization (APSCO)",
+    location: "Northwestern Polytechnical University (NPU), Xi'an, China",
+    period: "Summer",
+    description: "Participated in specialized small satellite training, international lectures, and collaborative space engineering seminars with student delegates from member states."
+  }
+];
+
+const publications = [
+  {
+    title: "SPARCS: Design and Development of CubeSats for Advanced Research and Cooperative Studies",
+    conference: "The 23rd International Conference of Iranian Aerospace Society (Aero2025)",
+    authors: "A.H. Khodabakhsh, M.A. Torkaman-Asadi, D. Rezaei, A. Moradi, et al.",
+    type: "Conference Paper"
+  }
+];
+
+const researchInterests = [
+  "Nonlinear Optimal Control & HJB Value Function Approximation",
+  "Operator-Theoretic Methods & Koopman Theory in Astrodynamics",
+  "Continuous-Thrust Trajectory Optimization & Active Debris Removal (ADR)",
+  "Satellite Formation Flying & Relative Orbital Mechanics",
+  "Space Systems Engineering & FMECA Reliability Analysis"
+];
 ---
 
-<MainLayout title="About Me">
-    <h2 class="text-3xl font-semibold mb-6 text-center sm:text-left">About Me</h2>
-  
-    <div class="space-y-4 max-w-2xl text-gray-300 mx-auto px-4 sm:px-0 text-base sm:text-lg">
-      <p>
-        I'm an aerospace engineering student passionate about orbital mechanics, satellite systems, and space exploration.
-      </p>
-      <p>
-        Over the past few years, I've worked on various projects related to orbit simulation, telemetry visualization, and propulsion design.
-      </p>
-      <p>
-        In my free time, I enjoy stargazing, sketching spacecraft designs, and contributing to open-source aerospace tools.
-      </p>
-  
-      <div class="mt-6 text-center sm:text-left">
-        <a href="/projects"
-          class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded transition">
-          View My Projects →
-        </a>
+<MainLayout 
+  title="About | Ali Moradi" 
+  description="Academic background, teaching assistantships, publications, and space engineering research by Ali Moradi."
+>
+  <div class="max-w-4xl mx-auto space-y-16">
+    <!-- Header / Bio Summary -->
+    <section class="border-b border-slate-800/80 pb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-sky-950/60 text-sky-400 border border-sky-800/50 mb-4">
+        Biographical Overview
       </div>
-    </div>
-  </MainLayout>
-  
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+        About Me
+      </h1>
+      <div class="prose prose-invert max-w-none text-slate-300 text-sm sm:text-base leading-relaxed space-y-4">
+        <p>
+          I am a space systems engineer and M.Sc. candidate at <strong class="text-white">Sharif University of Technology</strong>. My research and academic focus center around nonlinear optimal control, Koopman operator theory for active debris removal, and small satellite mission engineering.
+        </p>
+        <p>
+          Throughout my academic journey, I have contributed to student mission teams—notably serving as Assistant Systems Engineer and Payload Designer for the international <strong class="text-sky-300">SPARCS 3U CubeSat</strong> initiative within the APSCO framework. Additionally, I develop mathematical toolkits and simulations in MATLAB, and implement embedded software routines for specialized payload hardware.
+        </p>
+      </div>
+    </section>
+
+    <!-- Education Timeline -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Academic Education</h2>
+        <span class="h-px bg-slate-800 flex-grow"></span>
+      </div>
+
+      <div class="space-y-6">
+        {education.map((item) => (
+          <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-bold text-white">{item.degree}</h3>
+              <p class="text-sm font-mono text-sky-400 mt-0.5">{item.institution}</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">{item.details}</p>
+            </div>
+            <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded border border-slate-700/60 whitespace-nowrap self-start">
+              {item.period}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Teaching & Mentorship -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Teaching & Mentorship</h2>
+        <span class="h-px bg-slate-800 flex-grow"></span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4">
+        {teaching.map((item) => (
+          <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-800/70">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <h3 class="text-base font-semibold text-white">{item.course}</h3>
+              <span class="text-[11px] font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded border border-slate-700/50">
+                {item.period}
+              </span>
+            </div>
+            <p class="text-xs font-mono text-sky-400/90 mb-2">
+              {item.role} &bull; {item.institution} {item.instructor && `(Instructor: ${item.instructor})`}
+            </p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- International Programs -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">International Experience</h2>
+        <span class="h-px bg-slate-800 flex-grow"></span>
+      </div>
+
+      <div class="space-y-4">
+        {international.map((prog) => (
+          <div class="p-5 rounded-xl bg-slate-900/40 border border-slate-800/80">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <h3 class="text-base font-semibold text-white">{prog.title}</h3>
+              <span class="text-[11px] font-mono text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800/50">
+                {prog.location}
+              </span>
+            </div>
+            <p class="text-xs font-mono text-slate-400 mb-2">
+              {prog.organization}
+            </p>
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              {prog.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Publications</h2>
+        <span class="h-px bg-slate-800 flex-grow"></span>
+      </div>
+
+      <div class="space-y-3">
+        {publications.map((pub) => (
+          <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-800/70">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-semibold block mb-1">
+              {pub.type}
+            </span>
+            <h3 class="text-sm sm:text-base font-semibold text-white leading-snug">
+              {pub.title}
+            </h3>
+            <p class="text-xs text-slate-400 mt-1 font-mono">{pub.authors}</p>
+            <p class="text-xs text-slate-500 mt-1 italic">{pub.conference}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Research Interests</h2>
+        <span class="h-px bg-slate-800 flex-grow"></span>
+      </div>
+
+      <div class="flex flex-wrap gap-2.5">
+        {researchInterests.map((interest) => (
+          <span class="text-xs sm:text-sm font-mono text-slate-300 bg-slate-900/80 px-3.5 py-1.5 rounded-lg border border-slate-800/90 hover:border-sky-500/40 hover:text-white transition-colors">
+            {interest}
+          </span>
+        ))}
+      </div>
+    </section>
+  </div>
+</MainLayout>
