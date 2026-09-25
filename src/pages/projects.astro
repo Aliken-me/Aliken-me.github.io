@@ -18,7 +18,7 @@ const projects: Project[] = [
     title: "SPARCS: 3U CubeSat Mission (APSCO ACC)",
     category: "CubeSat Missions",
     role: "Assistant System Engineer & Payload Designer",
-    organization: "Sharif Space Systems / APSCO",
+    organization: "Sepehr Space Systems / APSCO",
     status: "In Progress (EM Phase)",
     description: "An international collaborative 3U CubeSat mission designed for technology demonstration in LEO, qualified for the Engineering Model (EM) construction phase in the APSCO CubeSat Competition (ACC).",
     highlights: [
@@ -26,7 +26,8 @@ const projects: Project[] = [
       "Spearheaded payload concept studies and interface specifications for an Electrodynamic Tether (EDT) deorbiting experiment and space dosimetry.",
       "Managed mission timeline, subsystem matrix documentation, and multidisciplinary design iterations."
     ],
-    tools: ["Systems Engineering", "FMECA", "EDT Payload", "MATLAB", "CubeSat 3U", "STK"]
+    tools: ["Systems Engineering", "FMECA", "EDT Payload", "MATLAB", "CubeSat 3U", "STK"],
+    githubUrl: "https://github.com/sparcs-mission"
   },
   {
     title: "Equispaced RGT Formation Flying & Event-Driven Control Simulator",
@@ -156,7 +157,7 @@ const projects: Project[] = [
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-1.5 text-xs font-mono text-sky-400 hover:text-sky-300 transition-colors"
                 >
-                  <span>Repository</span>
+                  <span>{proj.title.includes('SPARCS') ? 'Organization' : 'Repository'}</span>
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
