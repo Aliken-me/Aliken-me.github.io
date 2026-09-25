@@ -45,14 +45,17 @@ const navItems = [
     <!-- Navigation Bar -->
     <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#090d16]/75 border-b border-slate-800/80 transition-all">
       <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 group select-none">
-          <!-- Clean Floating Logo without Box -->
+        <a href="/" class="flex items-center gap-3 group select-none relative">
+          <!-- Ambient Backlight for Logo Contrast -->
           <div class="relative flex items-center justify-center">
+            <!-- Glowing Radial Ambient Light directly behind the black icon -->
+            <div class="absolute w-10 h-10 rounded-full bg-gradient-to-tr from-sky-400/35 via-cyan-300/25 to-transparent blur-md -z-10 group-hover:scale-125 transition-transform duration-300"></div>
+
             <img 
               src="/Aliken Logo v2.svg" 
               alt="Aliken Logo" 
-              style="height: 36px; width: auto;" 
-              class="brightness-125 contrast-125 drop-shadow-[0_0_12px_rgba(56,189,248,0.25)] transition-transform duration-300 group-hover:scale-105" 
+              style="height: 38px; width: auto;" 
+              class="brightness-125 contrast-125 drop-shadow-[0_0_10px_rgba(56,189,248,0.4)] transition-transform duration-300 group-hover:scale-105" 
             />
           </div>
 
