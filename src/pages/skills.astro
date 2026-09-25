@@ -1,26 +1,188 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import "../styles/global.css";
+import MainLayout from '../layouts/MainLayout.astro';
+
+const primaryTools = [
+  { name: "MATLAB & Simulink", percentage: 90, note: "Numerical ODE integration, perturbation modeling, and algorithm scripting" },
+  { name: "Embedded C / C++", percentage: 78, note: "Subsystem firmware, serial bus drivers (I2C/SPI/UART), and state machine logic" },
+  { name: "Python", percentage: 80, note: "Telemetry data parsing, ground station image reception, and numerical scripts" },
+  { name: "Ansys Systems Tool Kit (STK)", percentage: 80, note: "Orbit propagation, access time calculations, and constellation coverage" },
+  { name: "SolidWorks", percentage: 80, note: "CAD structural layout, mechanical packaging, and 3U CubeSat structure integration" },
+  { name: "Altium Designer", percentage: 60, note: "Schematic design, component footprints, and experimental board prototyping" },
+  { name: "NASA SPICE Toolkit", percentage: 55, note: "Planetary ephemeris extraction, reference frame rotation, and geometry kernels" }
+];
+
+const domainCompetencies = [
+  {
+    domain: "Astrodynamics & Trajectory Modeling",
+    items: [
+      "Zonal Geopotential Harmonics (J2–J10 Propagation)",
+      "Repeat Ground Track (RGT) Orbit Design",
+      "Relative Orbital Elements (ROE) Dynamics",
+      "High-Order Numerical ODE Solvers (ode78 / ode113)",
+      "Event-Driven Zero-Crossing Maneuver Triggers"
+    ]
+  },
+  {
+    domain: "Space Systems & Reliability Engineering",
+    items: [
+      "Failure Modes, Effects & Criticality Analysis (FMECA)",
+      "System Requirements Traceability Matrix (RTM)",
+      "3U CubeSat Architecture & Subsystem Allocation",
+      "Electrodynamic Tether (EDT) Deorbit Feasibility",
+      "Telemetry Packetizing & Command Sequencing"
+    ]
+  },
+  {
+    domain: "Embedded Avionics & Sensor Interfacing",
+    items: [
+      "Hardware Bus Communication Protocols (I2C, SPI, UART)",
+      "Inertial Measurement Units Interfacing (MPU6050)",
+      "Three-Axis Magnetometer Calibration (GY-271)",
+      "Imaging Payload Triggering & Serial Data Downlink",
+      "Solar Cell Power Monitoring & ADC Readouts"
+    ]
+  }
+];
+
+const certifications = [
+  { title: "Advanced Systems Tool Kit (STK)", issuer: "Pars Pajouhaan", year: "2023" },
+  { title: "Comprehensive MATLAB and Simulink", issuer: "Sharif Univ. Aerospace Assoc.", year: "2024" },
+  { title: "Digital Image Processing with MATLAB", issuer: "Pars Pajouhaan", year: "2024" },
+  { title: "Technical Robotics & Electronics Qualification (100h)", issuer: "NURMSA", year: "2022" }
+];
+
+const languages = [
+  { name: "English", level: "Professional Working Proficiency", percentage: 85 },
+  { name: "Japanese", level: "Basic Competency / Ongoing Study", percentage: 30 }
+];
 ---
 
-<MainLayout title="Projects">
-  <h2 class="text-3xl font-semibold mb-6">My Skills 👨‍💻</h2>
-
-  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 transform hover:scale-105 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-      <h3 class="text-xl font-bold mb-2">SolidWorks</h3>
-      <p class="text-gray-400 text-sm">A real-time satellite orbit simulation using MATLAB.</p>
+<MainLayout 
+  title="Technical Stack & Competencies | Ali Moradi" 
+  description="Computational engineering toolsets, space systems competencies, and embedded programming workflows by Ali Moradi."
+>
+  <div class="max-w-5xl mx-auto space-y-16">
+    <!-- Header -->
+    <div class="border-b border-slate-800/80 pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-sky-950/60 text-sky-400 border border-sky-800/50 mb-3">
+        Technical Architecture
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+        Engineering Toolkit & Stack
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
+        Hardware programming environments, numerical astrodynamics solvers, and system verification methodologies utilized in active engineering projects.
+      </p>
     </div>
 
-    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 transform hover:scale-105 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-      <h3 class="text-xl font-bold mb-2">System Tool Kit (STK)</h3>
-      <p class="text-gray-400 text-sm">A web-based dashboard to visualize aerospace telemetry data.</p>
-    </div>
+    <!-- Section 1: Core Toolset with Capsule Progress Bars -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-3 pb-2 border-b border-slate-800/60">
+        <span class="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.8)]"></span>
+        <h2 class="text-lg font-bold text-white tracking-wide">Core Development & Modeling Tools</h2>
+      </div>
 
-    <div class="bg-gray-900 p-4 rounded-xl border border-gray-800 transform hover:scale-105 hover:border-blue-500 hover:shadow-xl transition-all duration-300">
-      <h3 class="text-xl font-bold mb-2">MATLAB</h3>
-      <p class="text-gray-400 text-sm">I tired of boring and new manga and webtoons, I'd prefer to publish my own novel story.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+        {primaryTools.map((tool) => (
+          <div class="group">
+            <div class="flex items-baseline justify-between text-xs sm:text-sm mb-1.5">
+              <span class="font-semibold text-slate-100 group-hover:text-sky-300 transition-colors">
+                {tool.name}
+              </span>
+              <span class="font-mono text-xs text-sky-400/90 font-medium">
+                {tool.percentage}%
+              </span>
+            </div>
+            
+            <!-- Capsule Progress Bar -->
+            <div class="w-full h-2.5 rounded-full bg-slate-900 border border-slate-800 p-0.5 shadow-inner mb-1.5">
+              <div 
+                class="h-full rounded-full bg-gradient-to-r from-sky-500 via-cyan-400 to-teal-400 transition-all duration-700 ease-out shadow-[0_0_8px_rgba(56,189,248,0.4)]"
+                style={`width: ${tool.percentage}%`}
+              ></div>
+            </div>
+
+            <p class="text-[11.5px] font-mono text-slate-400 leading-snug">
+              {tool.note}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 2: Domain Engineering Competencies (3 Structured Blocks) -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-3 pb-2 border-b border-slate-800/60">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+        <h2 class="text-lg font-bold text-white tracking-wide">Domain Engineering Methodologies</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {domainCompetencies.map((group) => (
+          <div class="p-5 rounded-2xl bg-slate-900/40 border border-slate-800/80 flex flex-col justify-between">
+            <div>
+              <h3 class="text-sm font-bold text-white mb-4 pb-2 border-b border-slate-800/60 text-sky-300">
+                {group.domain}
+              </h3>
+              <ul class="space-y-2.5 text-xs text-slate-300">
+                {group.items.map((item) => (
+                  <li class="flex items-start gap-2 leading-relaxed">
+                    <span class="text-teal-400 mt-0.5 text-[11px]">&bull;</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 3: Languages & Certifications (Bottom Grid) -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-slate-800/80 pt-10">
+      
+      <!-- Languages (4 cols) -->
+      <div class="md:col-span-4 space-y-4">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+          <h3 class="text-base font-bold text-white">Languages</h3>
+        </div>
+
+        <div class="space-y-3.5">
+          {languages.map((item) => (
+            <div class="p-3 rounded-xl bg-slate-900/30 border border-slate-800/60">
+              <div class="flex justify-between items-center text-xs font-semibold text-slate-200 mb-1">
+                <span>{item.name}</span>
+                <span class="text-[11px] font-mono text-slate-400">{item.level}</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-slate-900 border border-slate-800 overflow-hidden">
+                <div class="h-full bg-sky-400 rounded-full" style={`width: ${item.percentage}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certifications (8 cols) -->
+      <div class="md:col-span-8 space-y-4">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <h3 class="text-base font-bold text-white">Specialized Technical Training</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {certifications.map((item) => (
+            <div class="p-3.5 rounded-xl bg-slate-900/30 border border-slate-800/60 flex items-center justify-between gap-3 text-xs">
+              <div>
+                <p class="font-medium text-slate-200">{item.title}</p>
+                <p class="text-[11px] font-mono text-slate-400 mt-0.5">{item.issuer}</p>
+              </div>
+              <span class="font-mono text-sky-400/90 text-[11px] shrink-0">{item.year}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   </div>
 </MainLayout>
-
